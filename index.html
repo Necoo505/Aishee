@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>❤️</title>
 
 <style>
-
-#message h2{
-font-size:32px;
-color:#ff4fa3;
-text-shadow:0 0 10px #ff4fa3;
-}
-
-#message{
-position:relative;
-z-index:10;
-background:rgba(0,0,0,0.6);
-padding:20px;
-border-radius:10px;
-}
-
-#scatter{
-z-index:1;
-}
-
 
 *{
 margin:0;
@@ -33,10 +17,26 @@ font-family:Arial;
 }
 
 body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#111;
+}
+
+/* PHONE FRAME */
+
+#phone{
+width:390px;
+height:844px;
 background:black;
+border-radius:40px;
+overflow:hidden;
+position:relative;
+box-shadow:0 0 40px rgba(0,0,0,0.8);
+border:8px solid #111;
 color:white;
 text-align:center;
-overflow:hidden;
 }
 
 /* LOCK */
@@ -47,7 +47,7 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 background:#000;
-padding:40px;
+padding:30px;
 border-radius:20px;
 box-shadow:0 0 30px #ff4fa3;
 }
@@ -74,9 +74,7 @@ cursor:pointer;
 
 #videoPage{
 display:none;
-position:fixed;
-top:0;
-left:0;
+position:absolute;
 width:100%;
 height:100%;
 }
@@ -91,11 +89,10 @@ object-fit:cover;
 
 #afterVideo{
 display:none;
-position:fixed;
-top:0;
-left:0;
+position:absolute;
 width:100%;
 height:100%;
+display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
@@ -104,7 +101,7 @@ align-items:center;
 /* LETTER */
 
 #letter{
-width:220px;
+width:200px;
 cursor:pointer;
 animation:shake 1s infinite;
 }
@@ -121,26 +118,28 @@ animation:shake 1s infinite;
 
 #message{
 display:none;
-max-width:700px;
-margin:20px;
-line-height:1.6;
-font-size:22px;
+max-width:320px;
+margin:15px;
+line-height:1.5;
+z-index:10;
+background:rgba(0,0,0,0.6);
+padding:15px;
+border-radius:10px;
 }
 
 /* BOOK */
 
 #book{
 display:none;
-width:420px;
-height:520px;
-margin:auto;
+width:320px;
+height:420px;
 }
 
 .pageImg{
 width:100%;
 height:100%;
 object-fit:contain;
-border-radius:12px;
+border-radius:10px;
 animation:pageFade 0.6s;
 }
 
@@ -149,37 +148,35 @@ from{opacity:0; transform:scale(0.9);}
 to{opacity:1; transform:scale(1);}
 }
 
-/* POLAROID PHOTOS */
+/* POLAROID */
 
 #scatter{
 display:none;
-position:fixed;
+position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-pointer-events:none;
 }
 
 .polaroid{
 position:absolute;
 background:white;
-padding:10px;
-box-shadow:0 8px 20px rgba(0,0,0,0.6);
+padding:8px;
+box-shadow:0 6px 15px rgba(0,0,0,0.6);
 border-radius:6px;
-animation:dropPhoto 1.5s ease forwards;
+animation:dropPhoto 1.2s forwards;
 }
 
 .polaroid img{
-width:180px;
-display:block;
+width:120px;
 }
 
 @keyframes dropPhoto{
 
 0%{
 opacity:0;
-transform:translateY(-300px) rotate(-20deg);
+transform:translateY(-200px) rotate(-20deg);
 }
 
 100%{
@@ -194,9 +191,13 @@ transform:translateY(0) rotate(var(--r));
 
 <body>
 
+<div id="phone">
+
+<!-- LOCK -->
+
 <div id="lock">
 
-<h2>Sevgi kodunu daxil et</h2>
+<h3>Sevgi kodunu daxil et</h3>
 
 <input type="text" id="code">
 
@@ -208,6 +209,8 @@ transform:translateY(0) rotate(var(--r));
 
 </div>
 
+<!-- VIDEO -->
+
 <div id="videoPage">
 
 <video id="video">
@@ -216,18 +219,20 @@ transform:translateY(0) rotate(var(--r));
 
 </div>
 
+<!-- AFTER VIDEO -->
+
 <div id="afterVideo">
 
 <img src="letter.png" id="letter" onclick="openLetter()">
 
 <div id="message">
 
-<h2>Ad günün mübarək sevgilim ❤️</h2>
+<h3>Ad günün mübarək sevgilim ❤️</h3>
 
 <p>
-Sən həyatımın ən gözəl hissəsisən.  
-Səninlə keçirdiyim hər an mənim üçün çox dəyərlidir.  
-Həmişə gülməyini və xoşbəxt olmağını istəyirəm.  
+Sən həyatımın ən gözəl hissəsisən.
+Səninlə keçirdiyim hər an mənim üçün çox dəyərlidir.
+Həmişə gülməyini və xoşbəxt olmağını istəyirəm.
 Səni çox sevirəm ❤️
 </p>
 
@@ -242,6 +247,8 @@ Səni çox sevirəm ❤️
 <audio id="audio">
 <source src="audio.mp3">
 </audio>
+
+</div>
 
 <script>
 
@@ -322,6 +329,7 @@ let book=document.getElementById("book")
 book.style.display="block"
 
 let audio=document.getElementById("audio")
+
 audio.play()
 
 audio.onended=()=>{
@@ -374,15 +382,17 @@ function closeBook(){
 document.getElementById("book").style.display="none"
 
 let scatter=document.getElementById("scatter")
+
 scatter.style.display="block"
 
 let positions=[
-[20,30],[60,25],[40,60],[75,55],[15,65],[55,40]
+[20,25],[60,20],[40,55],[70,60],[15,60],[55,35]
 ]
 
 for(let i=1;i<=6;i++){
 
 let div=document.createElement("div")
+
 div.className="polaroid"
 
 div.style.left=positions[i-1][0]+"%"
@@ -391,6 +401,7 @@ div.style.top=positions[i-1][1]+"%"
 div.style.setProperty("--r",(Math.random()*20-10)+"deg")
 
 let img=document.createElement("img")
+
 img.src="foto"+i+".png"
 
 div.appendChild(img)
