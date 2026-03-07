@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Mağaza</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f5f5f5;
+}
+
+/* NAVBAR */
+.navbar{
+  background:#111;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.search{
+  padding:8px;
+  width:250px;
+  border-radius:5px;
+  border:none;
+}
+
+.cart{
+  background:#ff4d4d;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+/* PRODUCTS */
+.products{
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.card h3{
+  margin:10px 0;
+}
+
+.price{
+  color:#ff4d4d;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  background:#111;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#ff4d4d;
+}
+
+/* FOOTER */
+.footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .search{
+    width:150px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">Nəcəf Store</div>
+  <input type="text" class="search" placeholder="Məhsul axtar...">
+  <div class="cart">Səbət (0)</div>
+</div>
+
+<div class="products">
+
+  <div class="card">
+    <img src="https://picsum.photos/300/200?1">
+    <h3>Smart Saat</h3>
+    <div class="price">120 AZN</div>
+    <button class="btn">Səbətə əlavə et</button>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/300/200?2">
+    <h3>Bluetooth Qulaqlıq</h3>
+    <div class="price">80 AZN</div>
+    <button class="btn">Səbətə əlavə et</button>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/300/200?3">
+    <h3>Telefon</h3>
+    <div class="price">950 AZN</div>
+    <button class="btn">Səbətə əlavə et</button>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/300/200?4">
+    <h3>Noutbuk</h3>
+    <div class="price">1800 AZN</div>
+    <button class="btn">Səbətə əlavə et</button>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 Nəcəf Store | Bütün hüquqlar qorunur
+</div>
+
+</body>
+</html>
