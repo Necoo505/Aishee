@@ -4,9 +4,30 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Sevgilim ❤️</title>
 
 <style>
+html,body{
+height:100%;
+width:100%;
+margin:0;
+padding:0;
+overflow:hidden;
+background:black;
+}
+
+#app{
+width:100vw;
+height:100vh;
+position:fixed;
+top:0;
+left:0;
+}
 
 *{
 margin:0;
@@ -278,7 +299,25 @@ Telefonu yan tutun 📱➡️
 <audio id="music" src="audio.mp3"></audio>
 
 <script>
+function openFullscreen() {
 
+let elem = document.documentElement
+
+if (elem.requestFullscreen) {
+elem.requestFullscreen()
+}
+
+else if (elem.webkitRequestFullscreen) {
+elem.webkitRequestFullscreen()
+}
+
+else if (elem.msRequestFullscreen) {
+elem.msRequestFullscreen()
+}
+
+}
+
+document.addEventListener("click",openFullscreen)
 /* orientation */
 
 function checkOrientation(){
@@ -520,4 +559,5 @@ draw()
 </script>
 
 </body>
+
 </html>
