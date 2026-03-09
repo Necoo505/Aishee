@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="az">
+
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sevgilim ❤️</title>
 
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#000000">
-
-<title>Sevgilim ❤️</title>
 
 <style>
 
@@ -29,7 +28,7 @@ color:white;
 overflow:hidden;
 }
 
-/* rotate warning */
+/* orientation */
 
 #rotateWarning{
 position:fixed;
@@ -41,20 +40,11 @@ background:black;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
-font-size:26px;
+font-size:24px;
 z-index:999;
 }
 
-/* glass */
-
-.glass{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
-padding:40px;
-border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.6);
-}
+/* center */
 
 .center{
 position:absolute;
@@ -64,13 +54,22 @@ transform:translate(-50%,-50%);
 text-align:center;
 }
 
+/* glass */
+
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:20px;
+}
+
 /* input */
 
 input{
 padding:12px;
-font-size:18px;
-border-radius:10px;
 border:none;
+border-radius:10px;
+font-size:18px;
 margin-top:10px;
 }
 
@@ -82,7 +81,7 @@ margin-top:10px;
 cursor:pointer;
 }
 
-/* intro video */
+/* intro */
 
 #introVideo{
 position:fixed;
@@ -101,7 +100,7 @@ display:none;
 #letter{
 width:220px;
 cursor:pointer;
-animation:float 3s ease-in-out infinite;
+animation:float 3s infinite;
 }
 
 @keyframes float{
@@ -125,15 +124,14 @@ height:100vh;
 #timer{
 margin-top:20px;
 font-size:20px;
-opacity:.8;
 }
 
 /* gallery */
 
 .gallery{
 display:flex;
-flex-wrap:wrap;
 gap:15px;
+flex-wrap:wrap;
 justify-content:center;
 margin-top:40px;
 }
@@ -141,7 +139,7 @@ margin-top:40px;
 .gallery img,
 .gallery video{
 width:160px;
-border-radius:12px;
+border-radius:10px;
 cursor:pointer;
 }
 
@@ -188,7 +186,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* heart canvas */
+/* hearts */
 
 #heartCanvas{
 position:fixed;
@@ -229,7 +227,7 @@ Telefonu yan tutun 📱➡️
 
 </div>
 
-<!-- INTRO VIDEO -->
+<!-- INTRO -->
 
 <video id="introVideo" src="intro.mp4"></video>
 
@@ -249,9 +247,7 @@ Telefonu yan tutun 📱➡️
 
 <h1>Ad günün mübarək sevgilim ❤️</h1>
 
-<p>
-Sən həyatımın ən gözəl möcüzəsisən.
-</p>
+<p>Sən həyatımın ən gözəl möcüzəsisən.</p>
 
 <div id="timer"></div>
 
@@ -281,11 +277,10 @@ document.addEventListener("click",()=>{
 
 let el=document.documentElement
 
-if(el.requestFullscreen){
-el.requestFullscreen()
-}
+if(el.requestFullscreen) el.requestFullscreen()
 
 })
+
 
 /* orientation */
 
@@ -298,6 +293,7 @@ rotateWarning.style.display="flex"
 }else{
 
 rotateWarning.style.display="none"
+
 codeScreen.style.display="block"
 
 }
@@ -305,9 +301,11 @@ codeScreen.style.display="block"
 }
 
 window.addEventListener("resize",checkOrientation)
+
 checkOrientation()
 
-/* gallery media */
+
+/* gallery */
 
 const media=[
 
@@ -339,9 +337,9 @@ if(src.includes(".mp4")){
 
 el=document.createElement("video")
 el.src=src
-el.muted=true
-el.loop=true
 el.autoplay=true
+el.loop=true
+el.muted=true
 
 }else{
 
@@ -356,6 +354,7 @@ el.onclick=()=>openViewer(src)
 
 })
 
+
 function openViewer(src){
 
 viewer.innerHTML=""
@@ -367,6 +366,7 @@ let v=document.createElement("video")
 v.src=src
 v.controls=true
 v.autoplay=true
+
 viewer.appendChild(v)
 
 }else{
@@ -381,7 +381,8 @@ viewer.appendChild(i)
 
 viewer.onclick=()=>viewer.style.display="none"
 
-/* code system */
+
+/* code */
 
 let attempts=0
 
@@ -407,13 +408,10 @@ letterScreen.style.display="block"
 attempts++
 error.innerText="Yanlış kod"
 
-if(attempts>=3){
-localStorage.setItem("blocked",true)
 }
 
 }
 
-}
 
 /* letter */
 
@@ -425,9 +423,11 @@ message.style.display="block"
 music.play()
 
 startTimer()
+
 showTimeline()
 
 }
+
 
 /* timer */
 
@@ -453,6 +453,7 @@ mo+" ay "+d+" gün "+h+" saat "+m+" dəqiqə"
 
 }
 
+
 /* timeline */
 
 function showTimeline(){
@@ -469,7 +470,8 @@ e.classList.add("show")
 
 }
 
-/* heart particles */
+
+/* hearts */
 
 const canvas=document.getElementById("heartCanvas")
 const ctx=canvas.getContext("2d")
