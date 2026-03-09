@@ -3,31 +3,18 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#000000">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <title>Sevgilim ❤️</title>
 
 <style>
-html,body{
-height:100%;
-width:100%;
-margin:0;
-padding:0;
-overflow:hidden;
-background:black;
-}
-
-#app{
-width:100vw;
-height:100vh;
-position:fixed;
-top:0;
-left:0;
-}
 
 *{
 margin:0;
@@ -42,7 +29,7 @@ color:white;
 overflow:hidden;
 }
 
-/* orientation warning */
+/* rotate warning */
 
 #rotateWarning{
 position:fixed;
@@ -55,12 +42,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-font-size:24px;
+font-size:26px;
 z-index:999;
-}
-
-.hidden{
-display:none;
 }
 
 /* glass */
@@ -99,14 +82,7 @@ margin-top:10px;
 cursor:pointer;
 }
 
-/* video */
-
-video{
-max-width:100%;
-border-radius:15px;
-}
-
-/* intro */
+/* intro video */
 
 #introVideo{
 position:fixed;
@@ -156,8 +132,8 @@ opacity:.8;
 
 .gallery{
 display:flex;
-gap:15px;
 flex-wrap:wrap;
+gap:15px;
 justify-content:center;
 margin-top:40px;
 }
@@ -212,7 +188,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* hearts */
+/* heart canvas */
 
 #heartCanvas{
 position:fixed;
@@ -224,6 +200,7 @@ pointer-events:none;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -238,7 +215,7 @@ Telefonu yan tutun 📱➡️
 
 <!-- CODE -->
 
-<div id="codeScreen" class="center glass hidden">
+<div id="codeScreen" class="center glass" style="display:none">
 
 <h2>İpucu: Tanış olduğumuz tarix ❤️</h2>
 
@@ -252,7 +229,7 @@ Telefonu yan tutun 📱➡️
 
 </div>
 
-<!-- VIDEO -->
+<!-- INTRO VIDEO -->
 
 <video id="introVideo" src="intro.mp4"></video>
 
@@ -272,15 +249,13 @@ Telefonu yan tutun 📱➡️
 
 <h1>Ad günün mübarək sevgilim ❤️</h1>
 
-<p>Sən həyatımın ən gözəl möcüzəsisən.</p>
+<p>
+Sən həyatımın ən gözəl möcüzəsisən.
+</p>
 
 <div id="timer"></div>
 
-<!-- GALLERY -->
-
 <div class="gallery" id="gallery"></div>
-
-<!-- LOVE STORY -->
 
 <div class="timeline">
 
@@ -299,25 +274,19 @@ Telefonu yan tutun 📱➡️
 <audio id="music" src="audio.mp3"></audio>
 
 <script>
-function openFullscreen() {
 
-let elem = document.documentElement
+/* fullscreen */
 
-if (elem.requestFullscreen) {
-elem.requestFullscreen()
+document.addEventListener("click",()=>{
+
+let el=document.documentElement
+
+if(el.requestFullscreen){
+el.requestFullscreen()
 }
 
-else if (elem.webkitRequestFullscreen) {
-elem.webkitRequestFullscreen()
-}
+})
 
-else if (elem.msRequestFullscreen) {
-elem.msRequestFullscreen()
-}
-
-}
-
-document.addEventListener("click",openFullscreen)
 /* orientation */
 
 function checkOrientation(){
@@ -329,7 +298,7 @@ rotateWarning.style.display="flex"
 }else{
 
 rotateWarning.style.display="none"
-codeScreen.classList.remove("hidden")
+codeScreen.style.display="block"
 
 }
 
@@ -337,7 +306,6 @@ codeScreen.classList.remove("hidden")
 
 window.addEventListener("resize",checkOrientation)
 checkOrientation()
-
 
 /* gallery media */
 
@@ -388,11 +356,9 @@ el.onclick=()=>openViewer(src)
 
 })
 
-
 function openViewer(src){
 
 viewer.innerHTML=""
-
 viewer.style.display="flex"
 
 if(src.includes(".mp4")){
@@ -415,8 +381,7 @@ viewer.appendChild(i)
 
 viewer.onclick=()=>viewer.style.display="none"
 
-
-/* code */
+/* code system */
 
 let attempts=0
 
@@ -443,9 +408,7 @@ attempts++
 error.innerText="Yanlış kod"
 
 if(attempts>=3){
-
 localStorage.setItem("blocked",true)
-
 }
 
 }
@@ -506,7 +469,7 @@ e.classList.add("show")
 
 }
 
-/* hearts */
+/* heart particles */
 
 const canvas=document.getElementById("heartCanvas")
 const ctx=canvas.getContext("2d")
@@ -559,5 +522,4 @@ draw()
 </script>
 
 </body>
-
 </html>
